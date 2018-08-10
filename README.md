@@ -1,5 +1,9 @@
-# 42-fillit
+#42
 
-Introduction: Fillit is a project that lets you discover and/or familiarize yourself with a recurring problem in programming: searching for the optimal solution among a huge set of possibilities. In this particular project, you will be charged with creating an algorithm which fits some Tetriminos together into the smallest possible square. A Tetriminos is a 4-blocks geometric figure that most of you might know thanks to the popular game Tetris.
+Fillit is the second project required to complete here at 42, welcome to the ultimate fuckery.
 
-Goals: Fillit does not consist of recoding Tetris, even if it’s still a variant of this game. Your program will take a file as parameter which contains a list of Tetriminos and arrange them to create the smallest square possible. Obviously, your main goal is to find this smallest square in the minimal amount of time, despite a exponentially growing number of possibilities each time a piece is added. Then, you will have to think carefully about your data structures and your solving algorithm, if you want your program answers before the next millenium.
+Its a tetris wannabe, that looks for hash marks that replicate "tetriminos"  and are supposed to be connected and put on the board i guess?
+
+ its a 4x4 array and back tracking algo and functions to analyze its location and values..
+ 
+ Forgive me if im wrong.
