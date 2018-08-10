@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 18:58:09 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 18:58:12 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/09 20:43:22 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/09 20:43:23 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,5 @@
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	if (s == NULL)
-		return ;
 	write(fd, s, ft_strlen(s));
 }

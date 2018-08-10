@@ -3,28 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 18:59:35 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 18:59:38 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/07 10:59:59 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/07 11:00:00 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strcmp(const char *s1, const char *s2)
-{
-	char	*a;
-	char	*b;
+#include "libft.h"
 
-	a = (char *)s1;
-	b = (char *)s2;
-	while (*a != '\0' && *b != '\0')
+int		ft_strcmp(const char *s1, const char *s2)
+{
+	unsigned char *cmp1;
+	unsigned char *cmp2;
+
+	cmp1 = (unsigned char*)s1;
+	cmp2 = (unsigned char*)s2;
+	while (*cmp1 == *cmp2 && *cmp1 && *cmp2)
 	{
-		if (*a != *b)
-			return ((unsigned char)*a - (unsigned char)*b);
-		a++;
-		b++;
+		++cmp1;
+		++cmp2;
 	}
-	if (*a != *b)
-		return ((unsigned char)*a - (unsigned char)*b);
-	return (0);
+	return (*cmp1 - *cmp2);
 }

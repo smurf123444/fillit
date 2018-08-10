@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/10 22:01:09 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 18:42:54 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/07 11:25:22 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/07 11:25:24 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,28 @@
 
 int		ft_atoi(const char *str)
 {
-	int						i;
-	int						sign;
-	unsigned long long int	num;
+	int sum;
+	int negative;
 
-	i = 0;
-	sign = 1;
-	num = 0;
-	while ((str[i] == ' ') || (str[i] == '\t') || (str[i] == '\n') ||
-			(str[i] == '\v') || (str[i] == '\f') || (str[i] == '\r'))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-		sign = (str[i++] == '-') ? -1 : 1;
-	while ('0' <= str[i] && str[i] <= '9')
-		num = num * 10 + str[i++] - '0';
-	if (num > 9223372036854775807)
-		return ((sign == 1) ? -1 : 0);
-	return (sign * (int)num);
+	negative = 0;
+	sum = 0;
+	while (ft_isspace(*str))
+		str++;
+	if (*str == '+')
+		str++;
+	else if (*str == '-')
+	{
+		negative = 1;
+		str++;
+	}
+	while (*str && ft_isdigit(*str))
+	{
+		sum *= 10;
+		sum += (*str - '0');
+		++str;
+	}
+	if (negative == 1)
+		return (-sum);
+	else
+		return (sum);
 }

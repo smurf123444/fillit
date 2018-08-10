@@ -3,39 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 19:13:43 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 19:13:46 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/07 10:30:13 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/07 10:30:13 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
-	char	*s1;
-	char	*s2;
-	size_t	i;
+	const char	*b;
+	const char	*l;
+	size_t		i;
 
-	s1 = (char *)haystack;
-	s2 = (char *)needle;
-	if (*s2 == '\0')
-		return (s1);
-	while (*s1 != '\0' && len)
+	if (*little == '\0')
+		return ((char*)big);
+	while (*big && len > 0)
 	{
-		if (*s1 == *s2)
+		b = big;
+		l = little;
+		i = len;
+		while (*l && *b == *l && i--)
 		{
-			i = 0;
-			while (*(s1 + i) == *(s2 + i) && len - i)
-			{
-				i++;
-				if (*(s2 + i) == '\0')
-					return (s1);
-			}
+			l++;
+			b++;
 		}
-		len--;
-		s1++;
+		if (*l == '\0')
+			return ((char*)big);
+		big++;
+		--len;
 	}
 	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/10 21:53:07 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 08:52:12 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/07 18:48:46 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/07 18:48:47 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,15 @@
 
 int		ft_isprint(int c)
 {
-	return (32 <= c && c < 127);
+	char *characters;
+
+	characters = " !\"#$%&\'()*+,-./:;<=>\?@[\\]^_`{|}~";
+	if (ft_isalnum(c))
+		return (1);
+	while (*characters && *characters != c)
+		++characters;
+	if (*characters == '\0')
+		return (0);
+	else
+		return (1);
 }

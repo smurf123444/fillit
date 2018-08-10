@@ -1,29 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_print_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/11 23:21:28 by lbogar            #+#    #+#             */
-/*   Updated: 2016/11/11 23:21:38 by lbogar           ###   ########.fr       */
+/*   Created: 2016/11/21 17:20:30 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/21 17:20:32 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fillit.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+void	ft_print_array(char **array)
 {
-	t_list *lst;
-	t_list *tmp;
+	int i;
 
-	lst = *alst;
-	while (lst)
+	i = 0;
+	while (array[i] != NULL)
 	{
-		tmp = lst->next;
-		del((lst)->content, (lst)->content_size);
-		free(lst);
-		lst = tmp;
+		ft_putstr(array[i]);
+		ft_putchar('\n');
+		++i;
 	}
-	*alst = NULL;
+}
+
+void	ft_print_tetrimino(t_tet *tetrimino)
+{
+	int i;
+
+	i = 0;
+	while (i < 4)
+	{
+		ft_putnbr(tetrimino->x[i]);
+		ft_putchar(' ');
+		ft_putnbr(tetrimino->y[i]);
+		ft_putchar('\n');
+		++i;
+	}
+	ft_putchar('\n');
 }

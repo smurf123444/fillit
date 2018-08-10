@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 18:57:14 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 18:57:25 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/09 20:47:38 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/09 20:47:39 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,19 @@
 
 void	ft_putnbr_fd(int n, int fd)
 {
-	char	num[20];
-	int		i;
-	int		sign;
+	long s;
 
-	if (n == 0)
-		write(fd, "0", 1);
-	else if (n < 0)
-		write(fd, "-", 1);
-	sign = (n > 0) ? 1 : -1;
-	i = 0;
-	while (n)
+	s = (long)n;
+	if (s < 0)
 	{
-		num[i++] = '0' + (n % 10) * sign;
-		n /= 10;
+		ft_putchar_fd('-', fd);
+		s = -s;
 	}
-	while (--i >= 0)
-		write(fd, &(num[i]), 1);
+	if (s >= 10)
+	{
+		ft_putnbr_fd((s / 10), fd);
+		ft_putnbr_fd((s % 10), fd);
+	}
+	else
+		ft_putchar_fd((s + '0'), fd);
 }

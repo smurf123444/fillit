@@ -3,40 +3,69 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 19:14:58 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 19:15:00 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/09 23:00:45 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/09 23:00:46 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_strsplit(char const *s, char c)
+static int		ft_word_count(char const *s, char c)
 {
-	int		num;
-	int		i;
-	int		k;
-	int		len;
-	char	**x;
+	int			i;
+	int			word_count;
 
-	if (s == NULL)
-		return (NULL);
-	num = ft_words(s, c);
-	if (!(x = (char **)malloc((num + 1) * sizeof(char *))))
-		return (NULL);
 	i = 0;
-	k = -1;
-	while (num--)
+	word_count = 0;
+	while (s[i])
 	{
-		while (s[i] == c)
-			i++;
-		len = ft_letters(s, i, c);
-		if (!(x[++k] = (char *)malloc((len + 1) * sizeof(char))))
-			return (NULL);
-		x[k] = ft_strsub(s, (unsigned int)i, (size_t)len);
-		i += len;
+		if (s[i] != c)
+			if (s[i + 1] == c || s[i + 1] == '\0')
+				++word_count;
+		i++;
 	}
-	x[++k] = NULL;
-	return (x);
+	return (word_count);
+}
+
+static int		ft_word_len(char const *s, char c)
+{
+	int			len;
+
+	len = 0;
+	while (*s && *s != c)
+	{
+		len++;
+		s++;
+	}
+	return (len);
+}
+
+char			**ft_strsplit(char const *s, char c)
+{
+	char		**array;
+	int			i;
+
+	i = 0;
+	if (!s)
+		return (0);
+	array = (char**)malloc(sizeof(*array) * (ft_word_count(s, c) + 1));
+	if (array == NULL)
+		return (NULL);
+	while (*s)
+	{
+		while (*s && *s == c)
+			s++;
+		if (*s)
+		{
+			array[i] = ft_strsub(s, 0, ft_word_len(s, c));
+			if (array[i] == NULL)
+				return (NULL);
+			s = s + ft_word_len(s, c);
+			i++;
+		}
+	}
+	array[i] = NULL;
+	return (array);
 }

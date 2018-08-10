@@ -3,21 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 18:51:36 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 18:52:27 by chmannin         ###   ########.fr       */
+/*   Created: 2016/10/31 16:53:12 by lbogar            #+#    #+#             */
+/*   Updated: 2016/10/31 16:53:13 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memset(void *in, int data, size_t len)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	unsigned char *ptr;
+	unsigned char *p;
 
-	ptr = (unsigned char *)in;
-	while (len-- > 0)
-		*ptr++ = (unsigned char)data;
-	return (in);
+	p = b;
+	while (len > 0)
+	{
+		*p = c;
+		p++;
+		len--;
+	}
+	return (b);
 }

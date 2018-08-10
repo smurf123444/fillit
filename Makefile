@@ -3,60 +3,49 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: chmannin <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: adorn <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/08/05 10:59:22 by chmannin          #+#    #+#              #
-#    Updated: 2018/08/05 11:02:06 by chmannin         ###   ########.fr        #
+#    Created: 2016/11/18 10:13:38 by adorn             #+#    #+#              #
+#    Updated: 2016/11/22 16:30:19 by adorn            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	:= fillit 
+.PHONY: clean fclean re make all
 
-# directories
-SRC_DIR	:= ./src
-INC_DIR	:= ./includes
-OBJ_DIR	:= ./obj
-LIB_DIR	:= ./lib
+FILENAMES = ft_main.c
+FILENAMES += ft_array_functions.c ft_print_functions.c ft_extract_tetrimino.c
+FILENAMES += ft_tetrimino_functions.c ft_load_tetrimino.c
+FILENAMES += check_if_valid.c check_colrow.c ft_solver.c
+NAME = fillit
 
-SRC		:= main.c \
-		   reader.c \
-		   solver.c \
-		   map.c \
-		   tetrimino.c
-OBJ		:= $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
+SRCS	=$(addprefix srcs/, $(FILENAMES))
+OBJS	=$(addprefix build/, $(FILENAMES:.c=.o))
 
-CC		:= gcc
-CFLAGS	:= -Wall -Wextra -Werror -pedantic -std=c99
-OFLAGS	:= -pipe -flto
-CFLAGS	+= $(OFLAGS)
+CC		= gcc
+CFLAGS	= -Wall -Wextra -Werror
+CFLAGS	+= -I includes/
+LFLAGS	= -L ./libft/ -lft
 
-L_FT	:= $(LIB_DIR)/libft
+all: $(NAME)
 
-include $(L_FT)/libft.mk
+$(NAME):$(OBJS) | lib
+	@$(CC) $(CFLAGS) -o $(NAME) $(LFLAGS) $(OBJS)
 
-.PHONY: all clean fclean re
+build/%.o: srcs/%.c | build
+	@$(CC) $(CFLAGS) -o $@ -c $^
 
-all:
-	mkdir -p $(OBJ_DIR)
-	@$(MAKE) -C $(L_FT) --no-print-directory
-	@$(MAKE) $(NAME) --no-print-directory
+re: fclean all
 
-$(OBJ_DIR)/%.o:$(SRC_DIR)/%.c
-	$(CC) $(CFLAGS) $(LIB_INC) -I $(INC_DIR) -o $@ -c $<
-
-$(NAME): $(OBJ)
-	$(CC) $(OFLAGS) $(OBJ) $(LIB_LNK) -o $(NAME)
+lib:
+	@make -C ./libft
+	@make clean -C ./libft
 
 clean:
-	rm -rf $(OBJ_DIR)
+	@rm -rf build/
 
 fclean: clean
-	rm -rf $(NAME)
+	@make fclean -C ./libft
+	@rm -f $(NAME)
 
-re:
-	@$(MAKE) fclean --no-print-directory
-	@$(MAKE) all --no-print-directory
-
-relibs:
-	@$(MAKE) -C $(L_FT) re --no-print-directory
-	@$(MAKE) re --no-print-directory
+build:
+	@mkdir build/

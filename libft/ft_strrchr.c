@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr_temp.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 19:11:53 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 19:11:57 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/10 16:56:45 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/10 16:56:45 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char *last_pos;
+	size_t i;
 
-	last_pos = NULL;
-	while (*s != '\0')
+	i = ft_strlen(s) + 1;
+	while (i--)
 	{
-		if (*s == (char)c)
-			last_pos = (char*)s;
-		s++;
+		if (s[i] == (char)c)
+			return ((char*)s + i);
 	}
-	if (*s == (char)c)
-		return ((char *)s);
-	else
-		return (last_pos);
+	return (NULL);
 }

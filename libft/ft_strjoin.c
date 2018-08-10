@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/07/25 19:07:26 by chmannin          #+#    #+#             */
-/*   Updated: 2018/07/25 19:07:29 by chmannin         ###   ########.fr       */
+/*   Created: 2016/11/08 13:12:06 by lbogar            #+#    #+#             */
+/*   Updated: 2016/11/08 13:12:06 by lbogar           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,22 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char *x;
+	char	*join;
+	char	*temp;
+	size_t	size;
 
 	if (s1 == NULL || s2 == NULL)
 		return (NULL);
-	x = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
-	if (x == NULL)
+	size = ft_strlen(s1) + ft_strlen(s2) + 1;
+	join = (char*)malloc(sizeof(char) * size);
+	if (join == NULL)
 		return (NULL);
-	x = ft_strcpy(x, s1);
-	x = ft_strcat(x, s2);
-	return (x);
+	temp = join;
+	while (*s1)
+		*join++ = *s1++;
+	while (*s2)
+		*join++ = *s2++;
+	*join = '\0';
+	join = temp;
+	return (join);
 }
