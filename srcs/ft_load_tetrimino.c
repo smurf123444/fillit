@@ -6,7 +6,7 @@
 /*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/21 22:24:25 by lbogar            #+#    #+#             */
-/*   Updated: 2016/11/21 22:24:27 by lbogar           ###   ########.fr       */
+/*   Updated: 2018/08/11 11:32:16 by chmannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,13 @@
 
 static int		ft_is_legal(t_tet *t, t_map *map, int x, int y)
 {
+	// if the value of x pluse the struct of t in the x array of [1] is less than 0 >>OR<< y plus the value of t struct in the y array f [1] is less than 0
 	if (x + t->x[1] < 0 || y + t->y[1] < 0)
 		return (1);
+	// if the value of x pluse the struct of t in the x array of [2] is less than 0 >>OR<< y plus the value of t struct in the y array f [2] is less than 0
 	if (x + t->x[2] < 0 || y + t->y[2] < 0)
 		return (1);
+	// if the value of x pluse the struct of t in the x array of [3] is less than 0 >>OR<< y plus the value of t struct in the y array f [3] is less than 0
 	if (x + t->x[3] < 0 || y + t->y[3] < 0)
 		return (1);
 	if (x + t->x[1] > (map->xmax - 1) || y + t->y[1] > (map->ymax - 1))
