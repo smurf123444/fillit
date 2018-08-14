@@ -19,7 +19,7 @@
 */
 
 static int		legal_char(char *str)
-{
+
 	int		i;
 
 	i = 0;
@@ -37,9 +37,6 @@ I		if (str[i] != '#' && str[i] != '.' && str[i] != '\n') // if character is not 
 			/* ------------------------------------------------------------------------------------ */
 static int		check_if_valid(char *str)
 {
-	int			len;
-
-	len = ft_strlen(str);				// new int variable len given the Length of str from parameter of this function
 	if (legal_char(str)) 				// go through the legal_char function above,
 		return (1);						// if not kills the program (error)
 	if (main_check(str))				// go through main_check function (need to learn that)
@@ -104,4 +101,4 @@ char			*ft_extract_tetrimino(char *filename)
 		exit(1);									// Kill program
 	}
 	return (tetrimino);								//otherwise your answer will be returned under the tetrimino variable"
-}nt
+}
