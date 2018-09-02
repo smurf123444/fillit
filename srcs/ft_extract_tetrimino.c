@@ -37,14 +37,14 @@ I		if (str[i] != '#' && str[i] != '.' && str[i] != '\n')
 			/* ------------------------------------------------------------------------------------ */
 static int		check_if_valid(char *str)
 {
-	if (legal_char(str)) 				// go through the legal_char function above,
-		return (1);						// if not kills the program (error)
-	if (main_check(str))				// go through main_check function (need to learn that)
-		return (1);						// if not kills the function (error)
-	if (check_hash(str)) 				// Check Hashes
-		return (1); 					// if not Kill the funciton (error)
+	if (legal_char(str)) 				
+		return (1);				
+	if (main_check(str))				
+		return (1);				
+	if (check_hash(str)) 				
+		return (1); 					
 	else
-		return (0); 					//else works..
+		return (0); 					
 }			
 
 			/* ---------------------------------------------------------------*/
