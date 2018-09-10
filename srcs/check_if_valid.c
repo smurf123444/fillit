@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_if_valid.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adorn <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/21 20:39:08 by adorn             #+#    #+#             */
-/*   Updated: 2016/12/03 10:08:39 by adorn            ###   ########.fr       */
+/*   Created: 2018/09/09 14:34:51 by chmannin          #+#    #+#             */
+/*   Updated: 2018/09/09 14:34:55 by chmannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/*
-** Increments a counter each time a # has a neighboring #.
-** Total number of times we should find a neighbor is 6.
-*/
 
 static int			count_neighbor(char *map, int i)
 {

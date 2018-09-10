@@ -3,19 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   check_colrow.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adorn <marvin@42.fr>                       +#+  +:+       +#+        */
+/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/12/02 11:13:20 by adorn             #+#    #+#             */
-/*   Updated: 2016/12/03 10:08:37 by adorn            ###   ########.fr       */
+/*   Created: 2018/09/09 14:34:05 by chmannin          #+#    #+#             */
+/*   Updated: 2018/09/09 14:34:24 by chmannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
-
-/*
-**Checks that the size of the cols & rows is valid
-**depending on if there are one tetrimino or more than one
-*/
 
 static int	tet_one(char *str, int i)
 {

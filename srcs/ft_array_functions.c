@@ -3,43 +3,37 @@
 /*                                                        :::      ::::::::   */
 /*   ft_array_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/18 13:10:20 by lbogar            #+#    #+#             */
-/*   Updated: 2016/11/20 13:27:28 by adorn            ###   ########.fr       */
+/*   Created: 2018/09/09 14:35:09 by chmannin          #+#    #+#             */
+/*   Updated: 2018/09/09 14:35:24 by chmannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fillit.h"
 
-/*
-**creates a 2d char array of length and width, and initializes with '.'
-**this function assumes a constant length for every column,
-**so it can only be used to create squares and rectangles
-*/
-
 char			**ft_new_array(int x, int y)
 {
-	char	**array;
-	int		i;
-	int		j;
+	char	**arr;
+	int		index;
+	int		jay;
 
-	j = 0;
-	array = (char**)malloc(sizeof(char*) * (y + 1));
-	while (j < y)
+	jay = 0;
+	arr = (char**)malloc(sizeof(char*) * (y + 1));
+	while (jay < y)
 	{
-		i = 0;
-		array[j] = (char*)malloc(sizeof(char) * (x + 1));
-		while (i < x)
+		index = 0;
+		arr[jay] = (char*)malloc(sizeof(char) * (x + 1));
+		while (index < x)
 		{
-			array[j][i] = '.';
-			i++;
+			arr[jay][index] = '.';
+			index++;
 		}
-		array[j][i] = '\0';
-		j++;
+		arr[jay][index] = '\0';
+		jay++;
 	}
-	array[j] = NULL;
-	return (array);
+	arr[jay] = NULL;
+	return (arr);
 }
 
 static int		ft_starting_size(char *tetrimino)

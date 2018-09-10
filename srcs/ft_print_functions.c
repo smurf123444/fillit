@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_functions.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lbogar <marvin@42.fr>                      +#+  +:+       +#+        */
+/*   By: chmannin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/11/21 17:20:30 by lbogar            #+#    #+#             */
-/*   Updated: 2016/11/21 17:20:32 by lbogar           ###   ########.fr       */
+/*   Created: 2018/09/09 14:48:37 by chmannin          #+#    #+#             */
+/*   Updated: 2018/09/09 14:48:40 by chmannin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,29 +14,29 @@
 
 void	ft_print_array(char **array)
 {
-	int i;
+	int index;
 
-	i = 0;
-	while (array[i] != NULL)
+	index = 0;
+	while (array[index] != NULL)
 	{
-		ft_putstr(array[i]);
+		ft_putstr(array[index]);
 		ft_putchar('\n');
-		++i;
+		++index;
 	}
 }
 
 void	ft_print_tetrimino(t_tet *tetrimino)
 {
-	int i;
+	int index;
 
-	i = 0;
-	while (i < 4)
+	index = 0;
+	while (index < 4)
 	{
-		ft_putnbr(tetrimino->x[i]);
+		ft_putnbr(tetrimino->x[index]);
 		ft_putchar(' ');
-		ft_putnbr(tetrimino->y[i]);
+		ft_putnbr(tetrimino->y[index]);
 		ft_putchar('\n');
-		++i;
+		++index;
 	}
 	ft_putchar('\n');
 }
